@@ -1,0 +1,22 @@
+{
+    "name": "vendor/challenge2",
+    "description": "projet php",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Challenge2\\": "src/",
+            "Vendor\\Challenge3\\": "config/",
+            "Vendor\\Challenge4\\": "route/",
+            "Vendor\\Challenge5":""
+            
+
+        }
+    },
+    "authors": [
+        {
+            "name": "ndeye ndiaye"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
