@@ -1,7 +1,3 @@
-
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -73,13 +69,16 @@
 
             <!-- Login Card -->
             <div class="bg-gradient-to-br from-light-gray to-dark-gray rounded-3xl p-8 shadow-2xl border border-gray-700/50 backdrop-blur-sm">
-                <?php if (!empty($error)): ?>
+                <?php if (isset($errors) && !empty($errors)): ?>
                     <div class="bg-red-500/20 border border-red-500 text-red-300 px-4 py-3 rounded-xl text-sm mb-4">
-                        <?= htmlspecialchars($error) ?>
+                        <?php foreach ($errors as $error): ?>
+                            <p><?= htmlspecialchars($error) ?></p>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-                <form class="space-y-6" id="loginForm" method="post" action="">
-                    <!-- Email Field -->
+                
+                <form class="space-y-6" method="post" action="">
+                    <!-- Login Field -->
                     <div class="space-y-2">
                         <label for="login" class="block text-sm font-semibold text-gray-300 tracking-wide">
                             Login
@@ -91,6 +90,7 @@
                                 name="login" 
                                 required
                                 autocomplete="username"
+                                value="<?= htmlspecialchars($_POST['login'] ?? '') ?>"
                                 class="w-full bg-dark-gray/80 border-2 border-gray-600 rounded-xl pl-4 pr-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:border-green-accent focus:ring-2 focus:ring-green-accent/20 transition-all duration-300 hover:border-gray-500"
                                 placeholder="Votre login"
                             >
@@ -137,7 +137,6 @@
                     <button 
                         type="submit" 
                         class="w-full bg-gradient-to-r from-green-accent to-accent-green text-black py-4 rounded-xl font-bold text-lg hover:from-accent-green hover:to-green-600 focus:outline-none focus:ring-4 focus:ring-green-accent/30 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-green-accent/25"
-                        id="loginBtn"
                     >
                         Se connecter
                     </button>
